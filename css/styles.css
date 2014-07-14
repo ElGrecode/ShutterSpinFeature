@@ -1,0 +1,679 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    }
+
+html {
+    background: #000;
+    height: 100%;
+    }
+
+section.clock .patch {
+    background: transparent url(http://aprilzero.s3.amazonaws.com/a0/lib/i/shell/patch.png) no-repeat 0 0;
+    display: block;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    height: 261px;
+    width: 261px;
+    z-index: 1000;
+    }
+
+body {
+    background: #560404 url(http://aprilzero.s3.amazonaws.com/a0/lib/i/red.jpg) no-repeat center center;
+    position: relative;
+    height: 100%;
+    -webkit-border-radius: 7px;
+    }
+
+section.clock {
+    background: transparent url(http://aprilzero.s3.amazonaws.com/a0/lib/i/shell/rear-b.jpg) no-repeat bottom center;
+    background-size: contain;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;    display: block;
+    margin: -128px 0 0 -128px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 259px;
+    width: 259px;
+
+    z-index: 2;
+    z-index: 7;
+    }
+
+article.layer {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 256px;
+    width: 256px;
+    }
+
+
+
+
+@-webkit-keyframes blip {
+    0% {
+        opacity: 0;
+        bottom: 28px;
+        bottom: 10.25%;
+    } 18% {
+        bottom: 28px;
+        bottom: 11.5%;
+        opacity: 1;
+    } 80% {
+        bottom: 99px;
+        bottom: 45%;
+        opacity: 0.5;
+    } to {
+        bottom: 102px;
+        bottom: 50%;
+        opacity: 0;
+    }
+}
+
+
+@-webkit-keyframes leaf {
+    0% { -webkit-transform: rotate(-35deg); }
+    to { -webkit-transform: rotate(-107deg); }
+    }
+
+@-webkit-keyframes leaf-close {
+    0% { -webkit-transform: rotate(-105deg); }
+    to { -webkit-transform: rotate(-35deg); }
+    }
+
+@-webkit-keyframes reveal {
+    0% { background: rgba(224,224,224, .7); }
+    to { background: transparent; }
+    }
+
+@-webkit-keyframes obscure {
+    0% { background: transparent; }
+    to { background: rgba(224,224, 224, 0.7); }
+    }
+
+@-webkit-keyframes fade-in {
+    0% { opacity: 0; }
+    to { opacity: 1; }
+    }
+
+@-webkit-keyframes fade-out {
+    0% { opacity: 1; }
+    to { opacity: 0; }
+    }
+
+
+
+
+@-moz-keyframes spin {
+    0% { -moz-transform: scale(1.0) rotate(0deg); }
+    to { -moz-transform: scale(1.0) rotate(360deg); }
+    }
+
+@-moz-keyframes spin-ccw {
+    0% { -moz-transform: scale(1.0) rotate(0deg); }
+    to { -moz-transform: scale(1.0) rotate(-360deg); }
+    }
+
+@-moz-keyframes swing {
+    0% { -moz-transform: rotate(21deg); }
+    to { -moz-transform: rotate(-21deg); }
+    }
+
+@-moz-keyframes moon {
+    0% { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(-100deg); }
+    }
+
+@-moz-keyframes blip {
+    0% {
+        opacity: 0;
+        bottom: 28px;
+        bottom: 10.25%;
+    } 18% {
+        bottom: 28px;
+        bottom: 11.5%;
+        opacity: 1;
+    } 80% {
+        bottom: 99px;
+        bottom: 45%;
+        opacity: 0.5;
+    } to {
+        bottom: 102px;
+        bottom: 50%;
+        opacity: 0;
+    }
+}
+
+
+@-moz-keyframes leaf {
+    0% { -moz-transform: rotate(-35deg); }
+    to { -moz-transform: rotate(-107deg); }
+    }
+
+@-moz-keyframes leaf-close {
+    0% { -moz-transform: rotate(-105deg); }
+    to { -moz-transform: rotate(-35deg); }
+    }
+
+@-moz-keyframes reveal {
+    0% { background: rgba(0,0,0,0.7); }
+    to { background: transparent; }
+    }
+
+@-moz-keyframes obscure {
+    0% { background: transparent; }
+    to { background: rgba(0,0,0,0.7); }
+    }
+
+@-moz-keyframes fade-in {
+    0% { opacity: 0; }
+    to { opacity: 1; }
+    }
+
+@-moz-keyframes fade-out {
+    0% { opacity: 1; }
+    to { opacity: 0; }
+    }
+
+.patch { opacity: 1; }
+
+.static .shutter.layer,
+.firefox.static.loading .shutter.layer { display: none; }
+.static.loading .shutter.layer { display: block; }
+
+.shutter.layer {
+    background: transparent;
+    -webkit-border-radius: 10px;
+    z-index: 600;
+    }
+
+.loading .shutter.layer {
+    background: #000;
+    }
+
+.shutter.layer .darkness {
+    background: #000;
+    display: block;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    x-webkit-animation-name: fade-out;
+    -webkit-animation-delay: 0;
+    -webkit-animation-duration: 1100ms;
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-direction: normal;
+
+    }
+
+.shutter.closing.layer .darkness {
+    opacity: 0;
+
+    x-webkit-animation-name: fade-in;
+    -webkit-animation-delay: 350ms;
+    -webkit-animation-duration: 800ms;
+    x-webkit-animation-timing-function: linear;
+
+    }
+
+.shutter.layer .leaf {
+    background: transparent;
+    background-size: contain;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    margin: -100px 0 0 -100px;
+    position: absolute;
+    display: block;
+    height: 100px;
+    width: 100px;
+    -webkit-transform-origin: bottom right;
+    -moz-transform-origin: bottom right;
+    z-index: 5;
+    }
+
+.shutter.layer .leaf.high {
+    /*z-index: 100;*/
+    z-index: 99;
+    }
+
+.shutter.layer .leaf span {
+    background: url(http://aprilzero.s3.amazonaws.com/a0/lib/i/shutter/leaf8lo.png) no-repeat right 0;
+
+    background-size: 200px 150px;
+    height: 150px;
+    width: 200px;
+    position: absolute;
+    top: 0px;
+    left: -50px;
+    -webkit-transform-origin: 150px 100px;
+    -webkit-transform: rotate(-35deg);
+
+    x-webkit-animation-name: leaf;
+    -webkit-animation-delay: 20ms;
+    -webkit-animation-duration: 2100ms;
+    -webkit-animation-duration: 1500ms;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-direction: normal;
+    z-index: inherit;
+    }
+
+.shutter.layer .leaf span.closing {
+    -webkit-animation-delay: 50ms;
+    -webkit-transform: rotate(-105deg);
+    -webkit-animation-duration: 1800ms;
+    -webkit-animation-duration: 1000ms;
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-timing-function: ease-in;
+    }
+
+.shutter.layer .leaf.high span {
+    background-image: url(http://aprilzero.s3.amazonaws.com/a0/lib/i/shutter/leaf8hi.png);
+
+    }
+
+.shutter.layer .leaf.start span {
+    background-image: url(http://aprilzero.s3.amazonaws.com/a0/lib/i/shutter/leaf8lo-start.png);
+
+    }
+
+.shutter.layer .leaf.start.high span {
+    background: url(http://aprilzero.s3.amazonaws.com/a0/lib/i/shutter/leaf8hi.png) no-repeat right 0; /* no sharp corners initiative */
+    }
+
+.shutter.layer .leaf.one {
+    top: 0%;
+    left: 50%;
+
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+
+    z-index: 10;
+    }
+
+    .shutter.layer .leaf.eight {
+        top: 6.5%;
+        left: 72%;
+        -webkit-transform: rotate(-63.5deg);
+        -moz-transform: rotate(-63.5deg);
+
+        }
+
+.shutter.layer .leaf.two {
+    top: 20%;
+    left: 91%;
+    -webkit-transform: rotate(-38.6deg);-moz-transform: rotate(-38.6deg);
+    }
+
+    .shutter.layer .leaf.nine {
+        top: 39%;
+        left: 97%;
+
+        top: 38.5%;
+        left: 99.3%;
+        -webkit-transform: rotate(-13.1deg);-moz-transform: rotate(-13.1deg);
+        -webkit-transform: rotate(-14deg);-moz-transform: rotate(-14deg);
+        }
+
+.shutter.layer .leaf.three {
+    top: 60%;
+    left: 98.5%;
+    -webkit-transform: rotate(12.4deg);-moz-transform: rotate(12.4deg);
+    }
+
+    .shutter.layer .leaf.ten {
+        top: 80.5%;
+        left: 89.5%;
+        -webkit-transform: rotate(38deg);-moz-transform: rotate(38deg);
+        }
+
+.shutter.layer .leaf.four {
+    top: 95%;
+    left: 73%;
+    xdisplay: none;
+
+    -webkit-transform: rotate(63.4deg);-moz-transform: rotate(63.4deg);
+    }
+
+    .shutter.layer .leaf.eleven {
+        top: 99%;
+        left: 50%;
+
+        xdisplay: none;
+        -webkit-transform: rotate(89.7deg);-moz-transform: rotate(89.7deg);
+        }
+
+
+.shutter.layer .leaf.five {
+    top: 95.5%;
+    left: 29%;
+    xdisplay: none;
+    -webkit-transform: rotate(116deg);-moz-transform: rotate(116deg);
+    }
+
+    .shutter.layer .leaf.twelve {
+        top: 80.5%;
+        left: 11.5%;
+
+        -webkit-transform: rotate(141.9deg);-moz-transform: rotate(141.9deg);
+        }
+
+.shutter.layer .leaf.six {
+    top: 60%;
+    left: 2%;
+    left: 0.75%;
+
+    -webkit-transform: rotate(167.8deg);-moz-transform: rotate(167.8deg);
+    }
+
+    .shutter.layer .leaf.thirteen {
+        top: 39%;
+        left: 3%;
+        xdisplay: none;
+        -webkit-transform: rotate(192.1deg);-moz-transform: rotate(192.1deg);
+        }
+
+.shutter.layer .leaf.seven {
+    top: 19%;
+    left: 11%;
+    xdisplay: none;
+
+
+    -webkit-transform: rotate(216.4deg);-moz-transform: rotate(216.4deg);
+    }
+
+    .shutter.layer .leaf.fourteen {
+        top: 6.5%;
+        top: 4%;
+        top: 3.5%;
+
+        left: 27.35%;
+        xdisplay: none;
+        -webkit-transform: rotate(242.1deg);-moz-transform: rotate(242.1deg);
+        -webkit-transform: rotate(243.5deg);-moz-transform: rotate(243.5deg);
+        }
+
+    .shutter.layer .leaf.fourteen span {
+        -webkit-animation-duration: 1600ms; /* Slightly more time (slower) */
+        -moz-animation-duration: 1600ms; /* Slightly more time (slower) */
+        }
+
+    .shutter.layer .leaf.fourteen span.closing {
+        -webkit-animation-duration: 980ms; /* Slightly less time (faster) */
+        -moz-animation-duration: 980ms; /* Slightly less time (faster) */
+        x-webkit-animation-timing-function: ease-in-out;
+        }
+
+    /*
+
+    .shutter.layer .leaf.thirteen.high span,
+    .shutter.layer .leaf.seven.high span,
+    .shutter.layer .leaf.fourteen.high span {
+        background: url(../i/shutter/leaf8hi-clip.png) no-repeat right 0;
+        }
+
+    */
+
+
+
+.patch { opacity: 1; }
+
+.static .shutter.layer,
+.firefox.static.loading .shutter.layer { display: none; }
+.static.loading .shutter.layer { display: block; }
+
+.shutter.layer {
+    background: transparent;
+    -webkit-border-radius: 10px;
+    z-index: 600;
+    }
+
+.loading .shutter.layer {
+    background: #000;
+    }
+
+.shutter.layer .darkness {
+    background: #000;
+    display: block;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    -webkit-animation-delay: 0;
+    -webkit-animation-duration: 1100ms;
+    -webkit-animation-timing-function: ease-in;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-direction: normal;
+
+    }
+
+.shutter.closing.layer .darkness {
+    opacity: 0;
+
+    x-webkit-animation-name: fade-in;
+    -webkit-animation-delay: 350ms;
+    -webkit-animation-duration: 800ms;
+    x-webkit-animation-timing-function: linear;
+
+    }
+
+.shutter.layer .leaf {
+    background: transparent;
+    background-size: contain;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    margin: -100px 0 0 -100px;
+    position: absolute;
+    display: block;
+    height: 100px;
+    width: 100px;
+    -webkit-transform-origin: bottom right;
+    -moz-transform-origin: bottom right;
+    z-index: 5;
+    }
+
+.shutter.layer .leaf.high {
+    /*z-index: 100;*/
+    z-index: 99;
+    }
+
+.shutter.layer .leaf span {
+    background: url(http://aprilzero.s3.amazonaws.com/a0/lib/i/shutter/leaf8lo.png) no-repeat right 0;
+
+    background-size: 200px 150px;
+    height: 150px;
+    width: 200px;
+    position: absolute;
+    top: 0px;
+    left: -50px;
+    -webkit-transform-origin: 150px 100px;
+    -webkit-transform: rotate(-35deg);
+
+    x-webkit-animation-name: leaf;
+    -webkit-animation-delay: 20ms;
+    -webkit-animation-duration: 2100ms;
+    -webkit-animation-duration: 1500ms;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-direction: normal;
+    z-index: inherit;
+    }
+
+.shutter.layer .leaf span.closing {
+    -webkit-animation-delay: 50ms;
+    -webkit-transform: rotate(-105deg);
+    -webkit-animation-duration: 1800ms;
+    -webkit-animation-duration: 1000ms;
+    -webkit-animation-timing-function: ease-out;
+    -webkit-animation-timing-function: ease-in;
+    }
+
+.shutter.layer .leaf.high span {
+    background-image: url(http://aprilzero.s3.amazonaws.com/a0/lib/i/shutter/leaf8hi.png);
+
+    }
+
+.shutter.layer .leaf.start span {
+    background-image: url(http://aprilzero.s3.amazonaws.com/a0/lib/i/shutter/leaf7lo-start.png);
+    background-image: url(http://aprilzero.s3.amazonaws.com/a0/lib/i/shutter/leaf8lo-start.png);
+
+    }
+
+.shutter.layer .leaf.start.high span {
+    /*background-image: url(../i/shutter/leaf7hi.png);*/
+    background: url(http://aprilzero.s3.amazonaws.com/a0/lib/i/shutter/leaf8hi.png) no-repeat right 0; /* no sharp corners initiative */
+    }
+
+.shutter.layer .leaf.one {
+    top: 0%;
+    left: 50%;
+
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+
+    z-index: 10;
+    }
+
+    .shutter.layer .leaf.eight {
+        top: 6.5%;
+        left: 72%;
+        -webkit-transform: rotate(-63.5deg);
+        -moz-transform: rotate(-63.5deg);
+
+        }
+
+.shutter.layer .leaf.two {
+    top: 20%;
+    left: 91%;
+    -webkit-transform: rotate(-38.6deg);-moz-transform: rotate(-38.6deg);
+    }
+
+    .shutter.layer .leaf.nine {
+        top: 39%;
+        left: 97%;
+
+        top: 38.5%;
+        left: 99.3%;
+        -webkit-transform: rotate(-13.1deg);-moz-transform: rotate(-13.1deg);
+        -webkit-transform: rotate(-14deg);-moz-transform: rotate(-14deg);
+        }
+
+.shutter.layer .leaf.three {
+    top: 60%;
+    left: 98.5%;
+    -webkit-transform: rotate(12.4deg);-moz-transform: rotate(12.4deg);
+    }
+
+    .shutter.layer .leaf.ten {
+        top: 80.5%;
+        left: 89.5%;
+        -webkit-transform: rotate(38deg);-moz-transform: rotate(38deg);
+        }
+
+.shutter.layer .leaf.four {
+    top: 95%;
+    left: 73%;
+    xdisplay: none;
+
+    -webkit-transform: rotate(63.4deg);-moz-transform: rotate(63.4deg);
+    }
+
+    .shutter.layer .leaf.eleven {
+        top: 99%;
+        left: 50%;
+
+        xdisplay: none;
+        -webkit-transform: rotate(89.7deg);-moz-transform: rotate(89.7deg);
+        }
+
+
+.shutter.layer .leaf.five {
+    top: 95.5%;
+    left: 29%;
+    xdisplay: none;
+    -webkit-transform: rotate(116deg);-moz-transform: rotate(116deg);
+    }
+
+    .shutter.layer .leaf.twelve {
+        top: 80.5%;
+        left: 11.5%;
+
+        -webkit-transform: rotate(141.9deg);-moz-transform: rotate(141.9deg);
+        }
+
+.shutter.layer .leaf.six {
+    top: 60%;
+    left: 2%;
+    left: 0.75%;
+
+    -webkit-transform: rotate(167.8deg);-moz-transform: rotate(167.8deg);
+    }
+
+    .shutter.layer .leaf.thirteen {
+        top: 39%;
+        left: 3%;
+        xdisplay: none;
+        -webkit-transform: rotate(192.1deg);-moz-transform: rotate(192.1deg);
+        }
+
+.shutter.layer .leaf.seven {
+    top: 19%;
+    left: 11%;
+    xdisplay: none;
+
+
+    -webkit-transform: rotate(216.4deg);-moz-transform: rotate(216.4deg);
+    }
+
+    .shutter.layer .leaf.fourteen {
+        top: 6.5%;
+        top: 4%;
+        top: 3.5%;
+
+        left: 27.35%;
+        xdisplay: none;
+        -webkit-transform: rotate(242.1deg);-moz-transform: rotate(242.1deg);
+        -webkit-transform: rotate(243.5deg);-moz-transform: rotate(243.5deg);
+        }
+
+    .shutter.layer .leaf.fourteen span {
+        -webkit-animation-duration: 1600ms; /* Slightly more time (slower) */
+        -moz-animation-duration: 1600ms; /* Slightly more time (slower) */
+        }
+
+    .shutter.layer .leaf.fourteen span.closing {
+        -webkit-animation-duration: 980ms; /* Slightly less time (faster) */
+        -moz-animation-duration: 980ms; /* Slightly less time (faster) */
+        x-webkit-animation-timing-function: ease-in-out;
+        }
+
+    /*
+
+    .shutter.layer .leaf.thirteen.high span,
+    .shutter.layer .leaf.seven.high span,
+    .shutter.layer .leaf.fourteen.high span {
+        background: url(../i/shutter/leaf8hi-clip.png) no-repeat right 0;
+        }
+
+    */
+
+
+/* j.mp/webkit-tap-highlight-color */
+a:link { -webkit-tap-highlight-color: transparent; }
+/* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
+a:hover, a:active { outline: none; }
